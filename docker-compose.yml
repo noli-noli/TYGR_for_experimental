@@ -15,7 +15,7 @@ services:
     working_dir: /src
 
     #開発を行う為ひとまずinitを実行する。
-    command: /sbin/init
+    command: tail -f /dev/null
 
     #ttyとprivilegedを有効化
     privileged: true
