@@ -23,7 +23,7 @@ services:
     
     #学内用proxyを含めた環境変数ファイルを読込む
     env_file:
-      - proxy.env
+      - .env
 
     runtime: nvidia
     #core dumpを防ぐ為の設定
