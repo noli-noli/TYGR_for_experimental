@@ -5,6 +5,11 @@ services:
     build:
       context: src/
       dockerfile: dockerfile
+      #dockerfileで使用する変数を渡す。
+      args:
+        - http_tmp=$http_proxy
+        - https_tmp=$https_proxy
+
     volumes:
       - ./src:/src
     working_dir: /src
@@ -16,6 +21,10 @@ services:
     privileged: true
     tty: true
     
+    #学内用proxyを含めた環境変数ファイルを読込む
+    env_file:
+      - proxy.env
+
     runtime: nvidia
     #core dumpを防ぐ為の設定
     shm_size: 12GB
