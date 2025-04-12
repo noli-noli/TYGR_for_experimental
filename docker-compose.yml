@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  llama2:
+    build:
+      context: src/
+      dockerfile: dockerfile
+    volumes:
+      - ./src:/src
+    working_dir: /src
+
+    #開発を行う為ひとまずinitを実行する。
+    command: /sbin/init
+
+    #ttyとprivilegedを有効化
+    privileged: true
+    tty: true
+    
+    runtime: nvidia
+    #core dumpを防ぐ為の設定
+    shm_size: 12GB
+    #コンテナネットワークの設定
+    networks:
+      - my_network
+
+# コンテナネットワークの定義
+networks:
+  my_network:  
+    driver: bridge
