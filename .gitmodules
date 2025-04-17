@@ -1,0 +1,3 @@
+[submodule "src/TYGR"]
+	path = src/TYGR
+	url = git@github.com:noli-noli/TYGR.git
