@@ -588,7 +588,7 @@ def generate_glow_dataset_no_parallel(input_file_name: str, out_file_dir: str, o
 
 def generate_glow_dataset(input_file_name: str, out_file_dir: str, options: Options) -> Iterator[Tuple[GlowInput, GlowOutput]]:
   options.parallel = True
-  options.pool_size = 28
+  options.pool_size = 30
   if options.parallel:
     print("enter parallel")
     return generate_glow_dataset_parallel(input_file_name, out_file_dir, options)
