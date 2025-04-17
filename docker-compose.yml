@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  llama2:
+  tygr:
     build:
       context: src/
       dockerfile: dockerfile
@@ -9,6 +9,8 @@ services:
       args:
         - http_tmp=$http_proxy
         - https_tmp=$https_proxy
+
+    container_name: tygr_for_experimental
 
     volumes:
       - ./src:/src
