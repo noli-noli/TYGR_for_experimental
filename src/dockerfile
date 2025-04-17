@@ -14,7 +14,9 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 #apt関連の設定
 RUN apt update -y && apt upgrade -y
-
 RUN apt install -y python3 python3-pip
 
-RUN pip install torch==2.2.1 --extra-index-url https://download.pytorch.org/whl/cu128
+#torch関連のインストール
+RUN pip install torch-scatter==2.0.8 -f https://data.pyg.org/whl/torch-1.9.1+cu102.html
+RUN pip install torch-sparse==0.6.11 -f https://data.pyg.org/whl/torch-1.9.1+cu102.html
+RUN pip install torch-geometric==1.7.2
