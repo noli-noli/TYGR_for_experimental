@@ -10,14 +10,21 @@ SCRIPT = os.path.join("/src", "TYGR", "TYGR")
 with open(TARGET_JSON, "r") as f:
     data = json.load(f)
 
+files = os.listdir(SAVE_DIR)
+
+print("files in save dir:", files)
+
 for target_path in data.keys():
     input_path = os.path.join(DATASET_DIR, target_path)
     file_name = os.path.basename(target_path)
+
+    if file_name+".pkl" in files:
+        print("already exists:", file_name)
+        continue
+
     output_path = os.path.join(SAVE_DIR, file_name+".pkl")
 
-    print("processing:", input_path)
-    print("output:", output_path)
-    subprocess.run(["bash", SCRIPT, "datagen", input_path, output_path])
-    #subprocess.run(["bash", SCRIPT, "datagen", "/src/datasets/x86_64/c_cpp/app-accessibility/at-spi2-atk-2.38.0/libatk-bridge-2.0.so.0.0.0", "sample2.pkl"])
 
-    exit(0)
+    print("processing:", input_path)
+    subprocess.run(["bash", SCRIPT, "datagen", input_path, output_path])
+    #exit(0)
